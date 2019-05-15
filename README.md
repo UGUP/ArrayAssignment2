@@ -1,5 +1,9 @@
 # ArrayAssignment2
 
+Please enter six numbers(1-49) one by one
+
+*INPUT:*
+
 Enter Number 1: 45
 
 Enter Number 2: 42
