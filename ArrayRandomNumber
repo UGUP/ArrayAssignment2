@@ -1,0 +1,65 @@
+package com.company;
+
+import java.util.*;
+
+
+public class arrayRandom3 {
+
+
+    public static void main(String args[])
+    {
+
+        int array[] = new int[5];
+        Random r = new Random();
+        int RandomNumber = r.nextInt(6) + 1;
+
+
+        RandomNumber = r.nextInt(6) + 1;
+        array[0] = RandomNumber;
+
+        int j = 0;
+
+
+        System.out.println("the random number generated at 0th index is    " + RandomNumber);
+
+        for (int i = 1; i < array.length; i++)
+        {
+            RandomNumber = r.nextInt(6) + 1;
+
+
+            for (j = 1; j <= i; j++) {
+
+                if (array[j - 1] != RandomNumber)
+                {
+                    continue;
+
+                }
+                else {
+                    RandomNumber = r.nextInt(8) + 1;
+                    j--;
+                }
+            }
+
+            array[i] = RandomNumber;
+
+
+            }
+
+
+            for ( int i = 0; i < 5; i++) {
+
+
+                System.out.println(array[i]);
+
+
+            }
+
+        }
+    }
+
+
+
+
+
+
+
