@@ -1,103 +1,195 @@
 package com.company;
 
-import java.util.*;
-
-public class Array_Assignment2 {
-
-    public static void main(String args[]) {
-
-        int arr[] = new int[6];
-        int array[] = new int[6];
-        int arrayMatch[]=new int[6];
-        int count = 0;
-
-        System.out.println("Enter the numbers");
-
-        for (int i = 0; i < 6;)
-        {
-
-
-            try
-            {
-                Scanner input = new Scanner(System.in);
-                array[i] = input.nextInt();
-                i++;
-
-            }
-            catch (Exception e)
-            {
-                System.out.println("Enter a valid input");
-
-
-            }
-
-        }
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
 
 
 
-        Random r = new Random();
-        int randomNumber = r.nextInt(48) + 1;
-        int i;
-
-
-        for (i = 0; i < 6; )
-        {
-            boolean check = true;
-            randomNumber = r.nextInt(48) + 1;
-
-            for (int j = 0; j <= i; j++)
-            {
-                if (arr[j] == randomNumber)
-                {
-                    check = false;
-                    break;
-                }
-
-            }
-            if (check == true)
-            {
-                arr[i] = randomNumber;
-                i++;
-
-            }
-        }
-
-       for (i = 0; i < 6; i++)
-       {
-            boolean temVar = false;
-            for (int j = 0; j < array.length; j++)
-            {
-                if (arr[i] == array[j])
-                {
-
-                    count = count + 1;
-                    temVar = true;
-                    arrayMatch[i]=arr[i];
-
-                }
-
-
-
-            }
-
-
-        }
-
-        System.out.println("OUTPUT: Your Input Numbers: "+Arrays.toString(array));
-        System.out.println("The lucky numbers are "+Arrays.toString(arr));
-        System.out.println("Matched Lottery: "+Arrays.toString(arrayMatch));
-        System.out.println("You have " + count + " lucky match(es)");
-        System.out.println("Happy Coding");
-
+class RangeException10 extends Exception
+{
+    RangeException10(String s)
+    {
+        super(s);
     }
+
 }
 
+public class hey {
+
+
+
+ public static void main(String args[])
+        {
+
+            int count = 0;int i;
+            int array[] = new int[6];
+            int arrayMatch[]=new int[6];
+            int arr[] = new int[6];
+
+            array=Input();
+            arr=randomFun();
+
+            for (i = 0; i < 6; i++)
+            {
+                boolean temVar = false;
+                for (int j = 0; j < array.length; j++)
+                {
+                    if (arr[i] == array[j])
+                    {
+
+                        count = count + 1;
+                        temVar = true;
+                        arrayMatch[i]=arr[i];
+
+                    }
+                }
+            }
+
+            System.out.println("OUTPUT: Your Input Numbers: "+ Arrays.toString(array));
+            System.out.println("The lucky numbers are "+Arrays.toString(arr));
+            System.out.println("Matched Lottery: "+Arrays.toString(arrayMatch));
+            System.out.println("You have " + count + " lucky match(es)");
+            System.out.println("Happy Coding");
+        }
+
+
+        public static int[] Input() {
+
+            int array[] = new int[6];
+            int temp = 0;
+            int i = 0;
+            int j = 0;
+
+            System.out.println("Enter the numbers");
+            while (i <= 0) {
+
+                try {
+
+
+                    Scanner input = new Scanner(System.in);
+                    temp = input.nextInt();
+
+                    try {
+                        {
+                            if (temp < 0 || temp >= 50) {
+
+                                throw new RangeException10("Please enter the numbers in the range 1 to 49");
+
+
+                            } else {
+                                array[i] = temp;
+                                i++;
+
+
+                            }
+                        }
+
+
+                    } catch (RangeException10 e) {
+                        System.out.println("Please enter the numbers 1 to 49");
+                    }
+
+
+                } catch (InputMismatchException a) {
+                    System.out.println("Please enter only integer values ");
+                }
+            }
+
+
+            for (i = 1; i < 6; ) {
+
+                try {
+                    Scanner input = new Scanner(System.in);
+                    temp = input.nextInt();
+
+                    boolean count = true;
+
+                  try {
+                      if ((temp < 0 || temp >=50)) {
+                          throw new RangeException("Please enter the numbers 1 to 49");
+
+                      } else {
+
+
+                          for (j = 0; j < i; j++) {
+                              try {
+                                  if ((array[j] == temp)) {
+                                      count = false;
+                                      throw new RangeException("Please don't enter duplicate values");
+
+
+                                  }
+                              } catch (RangeException e) {
+                                  System.out.println("Please don't enter duplicate values");
+                              }
+                          }
+
+
+                          if (count == true) {
+                              array[i] = temp;
+                              i++;
+                          }
+                      }
+                  }
+                  catch (RangeException e3)
+                  {
+                      System.out.println("Please enter the numbers 1 to 49");
+                  }
+
+                    } catch(InputMismatchException E)
+                    {
+                        System.out.println("Please enter only integer values");
+                    }
+
+                }
+
+            return array;
+        }
 
 
 
 
 
+        public static int[] randomFun()
+        {
 
+            int arr[] = new int[6];
+            Random r = new Random();
+            int randomNumber = r.nextInt(48) + 1;
+            int i;
+
+
+            for (i = 0; i < 6; )
+            {
+                boolean check = true;
+                randomNumber = r.nextInt(48) + 1;
+
+                for (int j = 0; j <= i; j++)
+                {
+                    if (arr[j] == randomNumber)
+                    {
+                        check = false;
+                        break;
+                    }
+
+                }
+                if (check == true)
+                {
+                    arr[i] = randomNumber;
+                    i++;
+
+                }
+            }
+
+            return  arr;
+
+
+        }
+
+
+    }
 
 
 
